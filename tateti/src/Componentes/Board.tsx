@@ -33,7 +33,7 @@ export function Board(props:any){
 
 
     const createSala = () =>{
-      axios.post('http://25.94.145.147:3001/turn/room/create', {'nombre':'UnaSalaHechaEnReact :D'}).then(response=>{
+      axios.post('http://localhost:3001/turn/room/create', {'nombre':'UnaSalaHechaEnReact :D'}).then(response=>{
         LocalStorage.setItem('currentsala',response.data.idsala);
         setSala(response.data);
       }).catch((err)=>{console.log(err)});
@@ -41,7 +41,7 @@ export function Board(props:any){
 
     
     const updateSala = (idsala:any, valor:any, posicion:any) => {
-      axios.put('http://25.94.145.147:3001/turn/',{'idsala':idsala,'valor':valor,'posicion':posicion}).then(response=>{
+      axios.put('http://localhost:3001/turn/',{'idsala':idsala,'valor':valor,'posicion':posicion}).then(response=>{
         setSala(response.data);
       });
     }
@@ -52,7 +52,7 @@ export function Board(props:any){
 
 
     const getSala= (idsala:any)=>{
-      axios.get('http://25.94.145.147:3001/turn/room?idsala='+idsala).then(response => {
+      axios.get('http://localhost:3001/turn/room?idsala='+idsala).then(response => {
         LocalStorage.setItem('currentsala',idsala);
         setSala(response.data);
       });
